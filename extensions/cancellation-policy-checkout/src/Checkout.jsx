@@ -70,7 +70,7 @@ function renderMessageTemplate(template, linkColorConfig) {
           commandFor="cancellation-modal"
           tone={linkColorConfig.linkTone}
         >
-          Cancellation
+          Cancellation Policy
         </s-link>
       );
     } else {
