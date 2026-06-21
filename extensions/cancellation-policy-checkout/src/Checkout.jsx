@@ -1,3 +1,4 @@
+/** @jsxImportSource preact */
 import "@shopify/ui-extensions/preact";
 import { render } from "preact";
 import { useSettings } from "@shopify/ui-extensions/checkout/preact";
@@ -19,11 +20,27 @@ function Extension() {
 
   return (
     <s-stack gap="base" alignItems={alignItems}>
-      <s-text type="strong">Cancellation Policy</s-text>
+      {/* <s-text type="strong">Cancellation Policy</s-text> */}
       {renderMessage(messageTemplate, linkColorConfig, messageSize)}
 
-      <s-modal id="cancellation-modal" heading="Cancellation Policy">
-        <s-paragraph>TEST</s-paragraph>
+      <s-modal id="cancellation-modal" heading="Cancellations">
+        <s-stack gap="base">
+          <s-paragraph>
+            You may cancel your subscription at any time before your next
+            renewal date to avoid being charged for the next billing cycle.
+          </s-paragraph>
+          <s-paragraph>To cancel, you have two options:</s-paragraph>
+          <s-paragraph>
+            <s-text type="strong">Self-serve:</s-text> Log in to your account
+            at clothandpaper.com, navigate to "Manage Subscriptions," and select
+            "Cancel subscription."
+          </s-paragraph>
+          <s-paragraph>
+            <s-text type="strong">Contact us:</s-text> Email
+            assist@clothandpaper.com and our team will process your
+            cancellation.
+          </s-paragraph>
+        </s-stack>
         <s-button
           slot="primary-action"
           command="--hide"
