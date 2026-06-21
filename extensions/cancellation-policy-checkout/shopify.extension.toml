@@ -1,0 +1,47 @@
+api_version = "2026-04"
+
+[[extensions]]
+type = "ui_extension"
+name = "Cancellation Policy"
+handle = "cancellation-policy"
+uid = "7b4f884e-a941-3f83-8566-1d6298548c8fbcbe6e4f"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.block.render"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.actions.render-before"
+
+[extensions.capabilities]
+api_access = true
+network_access = false
+block_progress = false
+
+[extensions.settings]
+
+[[extensions.settings.fields]]
+key = "message_template"
+type = "multi_line_text_field"
+name = "Message template"
+description = "Use {token} placeholders where links should appear, e.g. By placing your order you agree to our {cancellation}."
+default = "Please review our {Cancellation} before placing your order."
+
+[[extensions.settings.fields]]
+key = "message_alignment"
+type = "single_line_text_field"
+name = "Message alignment"
+description = "Text alignment: left, center, or right (default: left)"
+
+[[extensions.settings.fields]]
+key = "message_size"
+type = "single_line_text_field"
+name = "Message font size"
+description = "Message size: small, base, or large. Note: large uses base text style to avoid heading-like font weight."
+
+[[extensions.settings.fields]]
+key = "link_color"
+type = "single_line_text_field"
+name = "Link color"
+description = "Supported values: auto, neutral, info, success, warning, critical"
