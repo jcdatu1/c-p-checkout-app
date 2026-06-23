@@ -1,7 +1,7 @@
 /** @jsxImportSource preact */
 import "@shopify/ui-extensions/preact";
 import { render } from "preact";
-import { useSettings } from "@shopify/ui-extensions/checkout/preact";
+import { useSettings, useCartLines } from "@shopify/ui-extensions/checkout/preact";
 
 export default async () => {
   render(<Extension />, document.body);
@@ -9,6 +9,15 @@ export default async () => {
 
 function Extension() {
   const settings = useSettings() || {};
+  const cartLines = useCartLines() || [];
+
+  // Only show the cancellation policy when the cart contains at least one
+  // subscription item (a line purchased through a selling plan).
+  const hasSubscriptionItem = cartLines.some(
+    (line) => line?.merchandise?.sellingPlan
+  );
+  if (!hasSubscriptionItem) return null;
+
   const messageTemplate =
     settings.message_template ||
     "Please review our {Cancellation} before placing your order.";
